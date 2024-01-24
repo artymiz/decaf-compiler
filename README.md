@@ -1,7 +1,7 @@
 Decaf Language
 --------------
 
-The compiler is built according to the `decaf` language specification as listed [https://anoopsarkar.github.io/compilers-class/decafspec.html](here)
+The compiler is built according to the `decaf` language specification as listed [here](https://anoopsarkar.github.io/compilers-class/decafspec.html)
 
 
 Naming your files
