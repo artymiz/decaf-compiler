@@ -1,0 +1,45 @@
+extern func print_int(int) void;
+extern func print_string(string) void;
+
+package SimpleSquareRoot {
+    // return the floor of the square root of val
+    func sqrt(val int) int {
+        var i, result int;
+
+        if (val == 0 || val == 1) { return (val);}
+
+        i = 1;
+        result = 1;
+
+        while (true) {
+            if (result > val) {
+                var end int;
+                while(true) {
+                    var end bool;
+                    break;
+                }
+                break;
+            }
+            i = i + 1;
+            result = i * i;
+        }
+
+        return (i - 1);
+    }
+
+    func printSqrt(val int) void {
+        print_string("sqrt(");
+        print_int(val);
+        print_string(")");
+        print_string(" = ");
+        print_int(sqrt(val));
+        print_string("\n");
+    }
+
+    func main() int {
+        printSqrt(81);
+        printSqrt(123);
+        printSqrt(1);
+        printSqrt(0);
+    }
+}

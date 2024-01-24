@@ -1,0 +1,21 @@
+extern func print_int(int) void;
+extern func print_string(string) void;
+
+package packageDecaf {
+    var boolVar bool;
+
+    func main() void {
+        if (boolVar || !boolFuncEmpty() || !boolFuncNoRet()) {
+            print_string("failure\n");
+        } else {
+            print_string("success\n");
+        }
+    }
+    
+    func boolFuncEmpty() bool {
+        return;
+    }
+
+    func boolFuncNoRet() bool {
+    }
+}

@@ -1,0 +1,75 @@
+
+extern func print_int(int) void;
+extern func print_string(string) void;
+
+package BinarySearch {
+    var arr[9] int;
+
+    // find the value and return the index
+    func find_in_range(left int, right int, val int) int {
+        var middle int;
+
+        if (right >= left) {
+            middle = left + (right  - left) / 2;
+
+            if (arr[middle] == val) {
+                return (middle);
+            }
+            if (arr[middle] > val) {
+                return (find_in_range(left, middle-1, val));
+            } else {
+                return (find_in_range(middle+1, right, val));
+            }
+        }
+
+        return (-1);
+    }
+
+    func init_arr() void {
+        arr[0] = -18;
+        arr[1] = -5;
+        arr[2] = -3;
+        arr[3] = 0;
+        arr[4] = 7;
+        arr[5] = 9;
+        arr[6] = 11;
+        arr[7] = 58;
+        arr[8] = 100;
+    }
+
+    func do_bin_search(l int, r int, val int) void {
+        print_int(val);
+        print_string(" ");
+        print_result(find_in_range(l, r, val) != -1);
+        print_string("(");
+        print_int(l);
+        print_string(", ");
+        print_int(r);
+        print_string(")\n");
+    }
+
+    func print_result(found bool) void {
+        if (found) {
+            print_string("found in range");
+            return;
+        }
+
+        print_string("not found in range");
+    }
+
+    func main() int {
+        var l0, r0 int;
+        var l1, r1 int;
+        var l2, r2 int;
+        init_arr();
+        r0 = 8;
+        l1 = 4;
+        r1 = r0;
+        r2 = l1 - 1;
+        do_bin_search(l0, r0, -18);
+        do_bin_search(l0, r0, -1);
+        do_bin_search(l1, r1, 58);
+        do_bin_search(l1, r1, 0);
+        do_bin_search(l2, r2, -3);
+    }
+}

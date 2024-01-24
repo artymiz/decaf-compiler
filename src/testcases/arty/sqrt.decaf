@@ -1,0 +1,48 @@
+extern func print_int(int) void;
+extern func print_string(string) void;
+
+package SquareRoot {
+    // return the floor of the square root of val
+    func sqrt(val int) int {
+        var left, right, middle, result int;
+
+        if (val == 0 || val == 1) { return (val);}
+
+        left = 1;
+        right = val;
+
+        while (left <= right) {
+            middle = (left + right) / 2;
+
+            if (middle*middle == val) {
+                return (middle);
+            }
+
+            if (middle*middle < val) {
+                left = middle + 1;
+                result = middle;
+            }
+            else {
+                right = middle - 1;
+            }
+        }
+
+        return (result);
+    }
+
+    func printSqrt(val int) void {
+        print_string("sqrt(");
+        print_int(val);
+        print_string(")");
+        print_string(" = ");
+        print_int(sqrt(val));
+        print_string("\n");
+    }
+
+    func main() int {
+        printSqrt(81);
+        printSqrt(123);
+        printSqrt(1);
+        printSqrt(0);
+    }
+}

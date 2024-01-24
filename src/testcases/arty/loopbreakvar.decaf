@@ -1,0 +1,22 @@
+extern func print_int(int) void;
+extern func print_string(string) void;
+
+package packageDecaf {
+    var end int = 5;
+
+    func main() int {
+        var i int;
+        for (i = 0; i < end; i = i + 1) {
+            while (true) {
+                // test if end variable is handled differently from loop
+                var end int;
+                end = 2;
+                print_string("breaking...\n");
+                break;
+            }
+        }
+
+        print_string("success!");
+        return ();
+    }
+}

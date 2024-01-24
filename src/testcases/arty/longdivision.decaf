@@ -1,0 +1,67 @@
+extern func print_int(int) void;
+extern func print_string(string) void;
+
+package LongDivision {
+    var NUM_PLACES int = 4;
+    var global_idx int;
+    var decimal_places[4] int;
+
+    func main() int {
+        global_idx = -1;
+        printDivEq(1, 16);
+        printDecimalPlaces();
+        print_string("\n");
+        printDivEq(3, 9);
+        printDecimalPlaces();
+        print_string("\n");
+        printDivEq(15, 3);
+        printDecimalPlaces();
+        print_string("\n");
+    }
+
+    func printDivEq(dividend int, divisor int) void {
+        print_int(dividend);
+        print_string(" / ");
+        print_int(divisor);
+        print_string(" = ");
+        print_int(dividend / divisor);
+        print_string(".");
+        getDecimalPlaces(dividend % divisor, divisor);
+    }
+
+    func getDecimalPlaces(dividend int, divisor int) void {
+        var i int;
+        while (true) {
+            dividend = dividend * 10;
+            if (i >= NUM_PLACES) {
+                return;
+            }
+            decimal_places[i] = dividend / divisor;
+            dividend = (dividend % divisor); 
+            i = i + 1;
+        }
+    }
+
+    func getIdx() int {
+        global_idx = global_idx + 1;
+        return (global_idx);
+    }
+
+    func printDecimalPlaces() void {
+        var i, j int;
+        while (true) {
+            if (i >= NUM_PLACES) {
+                break;
+            }
+            print_int(decimal_places[i]);
+            i = i + 1;
+        }
+        
+        for (j = 0; j < NUM_PLACES; j = j + 1) {
+            decimal_places[getIdx()] = 0;
+        }
+        
+        global_idx = -1;
+    }
+
+}

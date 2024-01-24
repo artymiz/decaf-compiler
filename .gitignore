@@ -1,0 +1,8 @@
+.vscode
+.ccls-cache
+__pycache__/*
+answer/.ccls-cache
+answer/compile_commands.json
+log.txt
+
+llvm/*

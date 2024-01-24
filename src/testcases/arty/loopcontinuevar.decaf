@@ -1,0 +1,25 @@
+extern func print_int(int) void;
+extern func print_string(string) void;
+
+package packageDecaf {
+    var end int = 5;
+
+    func main() int {
+        var i int;
+        for (i = 0; i < end; i = i + 1) {
+            if ((i % 2) == 1) {
+                // test if loop variable is handled differently from loop symboltable entry
+                var loop int;
+                loop = 2;
+
+                print_int(i);
+                print_string("\n");
+                continue;
+            }
+
+        }
+
+        print_string("success!");
+        return ();
+    }
+}

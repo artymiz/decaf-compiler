@@ -1,0 +1,100 @@
+extern func print_int(int) void;
+extern func print_string(string) void;
+
+package letterFrequency {
+    var SENTENCE_LEN int = 15;
+    var NUM_ALPHA int = 26;
+    var sentence[15] int;
+    var alpha_freq[26] int;
+
+    func main() int {
+        init_char_arr();
+        print_string("phrase = \"\vMississippi!?\r\"\n");
+        count_alpha();
+        print_freqs();
+        return ();
+    }
+
+    func init_char_arr() void {
+        sentence[0] = '\v';
+        sentence[1] = 'M';
+        sentence[2] = 'i';
+        sentence[3] = 's';
+        sentence[4] = 's';
+        sentence[5] = 'i';
+        sentence[6] = 's';
+        sentence[7] = 's';
+        sentence[8] = 'i';
+        sentence[9] = 'p';
+        sentence[10] = 'p';
+        sentence[11] = 'i';
+        sentence[12] = '!';
+        sentence[13] = '?';
+        sentence[14] = '\r';
+    }
+
+    // count the number of alphabets only, including capital letters
+    func count_alpha() void {
+        var i int;
+        for (i = 0; i < SENTENCE_LEN; i = i + 1) {
+            var c int;
+            c = sentence[i];
+            if (c >= 'A' && c <= 'z') {
+                var idx int;
+
+                if (c > 'Z' && c < 'a') {
+                    continue;
+                }
+
+                if (c >= 'a') {
+                    idx = c - 'a';
+                } else {
+                    idx = c - 'A';
+                }
+                alpha_freq[idx] = alpha_freq[idx] + 1;
+            }
+        }
+    }
+
+    func print_freqs() void {
+        var i int;
+        print_string("\nAlphabet Character Counts:\n");
+        for (i = 0; i < NUM_ALPHA; i = i + 1) {
+            if (alpha_freq[i] > 0) {
+                print_alphabet(i);
+                print_string(": ");
+                print_int(alpha_freq[i]);
+                print_string("\n");
+            }
+        }
+    }
+
+    func print_alphabet(ascii_val int) void {
+        if (ascii_val == 0) { print_string("a"); }
+        if (ascii_val == 1) { print_string("b"); }
+        if (ascii_val == 2) { print_string("c"); }
+        if (ascii_val == 3) { print_string("d"); }
+        if (ascii_val == 4) { print_string("e"); }
+        if (ascii_val == 5) { print_string("f"); }
+        if (ascii_val == 6) { print_string("g"); }
+        if (ascii_val == 7) { print_string("h"); }
+        if (ascii_val == 8) { print_string("i"); }
+        if (ascii_val == 9) { print_string("j"); }
+        if (ascii_val == 10) { print_string("k"); }
+        if (ascii_val == 11) { print_string("l"); }
+        if (ascii_val == 12) { print_string("m"); }
+        if (ascii_val == 13) { print_string("n"); }
+        if (ascii_val == 14) { print_string("o"); }
+        if (ascii_val == 15) { print_string("p"); }
+        if (ascii_val == 16) { print_string("q"); }
+        if (ascii_val == 17) { print_string("r"); }
+        if (ascii_val == 18) { print_string("s"); }
+        if (ascii_val == 19) { print_string("t"); }
+        if (ascii_val == 20) { print_string("u"); }
+        if (ascii_val == 21) { print_string("v"); }
+        if (ascii_val == 22) { print_string("w"); }
+        if (ascii_val == 23) { print_string("x"); }
+        if (ascii_val == 24) { print_string("y"); }
+        if (ascii_val == 25) { print_string("z"); }
+    }
+}
